@@ -19,7 +19,9 @@ gsettings set org.gnome.desktop.background picture-uri $BACKGROUND_DEST_PATH
 gsettings set org.gnome.desktop.background picture-uri-dark $BACKGROUND_DEST_PATH
 gsettings set org.gnome.desktop.background picture-options 'zoom'
 
-dconf load /org/gnome/terminal/ < ./configs/theme/tokyonight-gnome-terminal.txt
+# dconf load /org/gnome/terminal/ < ./configs/theme/tokyonight-gnome-terminal.txt
+dconf write /org/gnome/Ptyxis/Profiles/`dconf read /org/gnome/Ptyxis/default-profile-uuid | tr -d \'`/palette "'Tokyo Night'"
+
 
 # Set user image
 busctl call org.freedesktop.Accounts /org/freedesktop/Accounts/User$UID org.freedesktop.Accounts.User SetIconFile s $PWD/configs/theme/avatar.png
